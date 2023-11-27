@@ -1,0 +1,8 @@
+# Rename this file to .env
+DATABASE_DEV="mongodb+srv://<username>:<password>@sem4.5y6rwjf.mongodb.net/<database>?retryWrites=true&w=majority"
+DATABASE_PROD="mongodb+srv://<username>:<password>@sem4.5y6rwjf.mongodb.net/<database>?retryWrites=true&w=majority"
+DATABASE_USERNAME="YOUR USERNAME"
+DATABASE_PASSWORD="YOUR PASSWORD"
+# DATABASE_NAME="sample_training"
+DATABASE_NAME="YOUR DATABASE NAME"
+PORT=3000

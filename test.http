@@ -1,0 +1,30 @@
+### POST CAR
+# POST http://localhost:3003/api/v1/cars
+POST http://46.101.183.184:3005/api/v1/cars
+Accept: application/json
+Content-Type: application/json
+
+{
+ "name": "Blue Corolla", 
+  "speed": 120,
+  "color": "Blue",
+  "model": "Corolla",
+  "year": 2014,
+  "price": 30000,
+  "available": true,
+  "brand": "Toyota",
+  "description": "A nice car"
+}
+
+### GET ALL
+GET http://localhost:3003/api/v1/cars
+Accept: application/json
+
+### GET ONE
+GET http://localhost:3003/api/v1/cars/656337c7e59f6df22aa458d9
+Accept: application/json
+
+### Populate
+GET http://localhost:3003/api/v1/cars/populate
+
+###
