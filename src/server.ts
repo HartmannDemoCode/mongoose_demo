@@ -7,7 +7,7 @@ import cors from 'cors';
 import carRoutes from './routes/carRoute';
 
 dotenv.config();
-// console.log('DB: ... :',process.env)
+console.log('DB: ... :',process.env)
 
 // Connect to MongoDB database
 const DB = process.env.DATABASE_DEV!
@@ -18,7 +18,6 @@ const DB = process.env.DATABASE_DEV!
 mongoose.connect(DB, {
 }).then(() => console.log('DB connection successful!'));
 
-const port = process.env.PORT || 3000;
 const app: Application = express();
 
 // Middlewares
@@ -32,7 +31,7 @@ app.get('/', (req: Request, res: Response, next: NextFunction) => {
 
 app.use('/api/v1/cars', carRoutes);
 
-
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Server is Fire at http://localhost:${port}`);
 });

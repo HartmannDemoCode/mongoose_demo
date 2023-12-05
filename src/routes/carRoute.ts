@@ -16,13 +16,13 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/populate", async (req, res) => {
-    try {
-        populator();
-        res.json({ message: "Cars have been populated" });
-    } catch (error) {
-        const errorMessage = (error as Error).message;
-        res.status(500).json({ message: errorMessage });
-    }
+  try {
+    populator();
+    res.json({ message: "Cars have been populated" });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
+    res.status(500).json({ message: errorMessage });
+  }
 });
 
 router.get("/:id", async (req, res) => {
@@ -40,14 +40,22 @@ router.get("/:id", async (req, res) => {
 
 router.post("/", async (req, res) => {
   try {
-    console.log('req.body :', req.body);
+    console.log("req.body :", req.body);
     const car = await CarDocument.create(req.body);
     res.status(201).json({ car });
   } catch (error) {
-    if (error instanceof Error && 'name' in error && error.name === 'ValidationError') {
-        // Handle validation errors
-        const validationErrors = Object.values((error as any).errors).map((err: any) => err.message);
-        return res.status(400).json({ message: 'Validation failed', errors: validationErrors });
+    if (
+      error instanceof Error &&
+      "name" in error &&
+      error.name === "ValidationError"
+    ) {
+      // Handle validation errors
+      const validationErrors = Object.values((error as any).errors).map(
+        (err: any) => err.message
+      );
+      return res
+        .status(400)
+        .json({ message: "Validation failed", errors: validationErrors });
     }
     if (error instanceof Error) {
       const errorMessage = error.message;
@@ -81,6 +89,23 @@ router.put("/:id", async (req, res) => {
   } catch (error) {
     const errorMessage = (error as Error).message;
     // Check for specific errors and handle accordingly
+    res.status(500).json({ message: errorMessage });
+  }
+});
+
+router.delete("/:id", async (req, res) => {
+  try {
+    const car = await CarDocument.findById(req.params.id);
+
+    if (!car) {
+      return res.status(404).json({ message: "Car not found" });
+    }
+
+    await CarDocument.deleteOne({ _id: req.params.id });
+
+    res.status(200).json({ message: "Car deleted successfully" });
+  } catch (error) {
+    const errorMessage = (error as Error).message;
     res.status(500).json({ message: errorMessage });
   }
 });

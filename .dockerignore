@@ -1,0 +1,6 @@
+# Use to avoid sending sensitive data into the docker image with Dockerfile COPY or ADD command
+.env
+test.http
+docker-compose.yml
+env_file_copy
+README.md

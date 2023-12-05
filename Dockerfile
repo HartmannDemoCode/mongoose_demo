@@ -17,7 +17,7 @@ COPY . .
 RUN npm run build
 
 # Expose the port that your app is running on
-EXPOSE 3000
+# EXPOSE 3000
 
 # CMD ["pm2-runtime", "serve", "dist", "3000", "--spa"]
 CMD ["node", "--experimental-specifier-resolution=node", "dist/server.js"]

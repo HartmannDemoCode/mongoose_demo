@@ -2,3 +2,5 @@
 **/node_modules
 # Secrets
 **/*.env**/target/
+docker-compose.yml
+
